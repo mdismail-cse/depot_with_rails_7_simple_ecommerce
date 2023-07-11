@@ -16993,3 +16993,1730 @@ Content-Transfer-Encoding: 7bit
 ----==_mimepart_64acfde0ba580_34cf99c067952--
 
 [ActiveJob] [ActionMailer::MailDeliveryJob] [db050c7e-06dc-4ec8-8ed0-99ef344cc1de] Performed ActionMailer::MailDeliveryJob (Job ID: db050c7e-06dc-4ec8-8ed0-99ef344cc1de) from Async(default) in 1817.68ms
+Started GET "/" for ::1 at 2023-07-11 13:11:30 +0600
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by StoreController#index as HTML
+  [1m[36mCart Load (0.5ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:4:in `set_cart'
+  Rendering layout layouts/application.html.erb
+  Rendering store/index.html.erb within layouts/application
+  Rendered store/_notice.html.erb (Duration: 2.3ms | Allocations: 192)
+  [1m[36mProduct Load (3.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:12
+  Rendered store/_product.html.erb (Duration: 16.2ms | Allocations: 3052)
+  Rendered store/_product.html.erb (Duration: 2.2ms | Allocations: 698)
+  Rendered store/_product.html.erb (Duration: 2.0ms | Allocations: 616)
+  Rendered store/_product.html.erb (Duration: 3.2ms | Allocations: 529)
+  Rendered store/_product.html.erb (Duration: 4.0ms | Allocations: 526)
+  Rendered store/index.html.erb within layouts/application (Duration: 225.2ms | Allocations: 10908)
+  [1m[36mLineItem Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 53], ["LIMIT", 1]]
+  ↳ app/views/layouts/_cart.html.erb:1
+  Rendered layouts/_cart.html.erb (Duration: 16.7ms | Allocations: 4566)
+  Rendered layout layouts/application.html.erb (Duration: 420.8ms | Allocations: 67823)
+Completed 200 OK in 550ms (Views: 432.4ms | ActiveRecord: 12.0ms | Allocations: 79719)
+
+
+Started GET "/cable" for ::1 at 2023-07-11 13:11:31 +0600
+Started GET "/cable" [WebSocket] for ::1 at 2023-07-11 13:11:31 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Turbo::StreamsChannel is transmitting the subscription confirmation
+Turbo::StreamsChannel is streaming from products
+Started GET "/products" for ::1 at 2023-07-11 13:11:36 +0600
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:24
+  Rendered products/index.html.erb within layouts/application (Duration: 34.8ms | Allocations: 4125)
+  Rendered layouts/_cart.html.erb (Duration: 0.3ms | Allocations: 12)
+  Rendered layout layouts/application.html.erb (Duration: 41.1ms | Allocations: 5121)
+Completed 200 OK in 45ms (Views: 43.0ms | ActiveRecord: 0.8ms | Allocations: 5990)
+
+
+Finished "/cable" [WebSocket] for ::1 at 2023-07-11 13:11:38 +0600
+Turbo::StreamsChannel stopped streaming from products
+Started GET "/products/new" for ::1 at 2023-07-11 13:11:40 +0600
+Processing by ProductsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 21.2ms | Allocations: 2956)
+  Rendered products/new.html.erb within layouts/application (Duration: 23.9ms | Allocations: 3256)
+  Rendered layouts/_cart.html.erb (Duration: 0.1ms | Allocations: 10)
+  Rendered layout layouts/application.html.erb (Duration: 32.7ms | Allocations: 4204)
+Completed 200 OK in 35ms (Views: 33.5ms | ActiveRecord: 0.0ms | Allocations: 4651)
+
+
+Started POST "/products" for ::1 at 2023-07-11 13:13:44 +0600
+Processing by ProductsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "product"=>{"title"=>"this is the new product for test", "description"=>"this is totally in testing phase use this product for only $1 and give us the chance to improve our product", "image_url"=>"maapis", "price"=>"1"}, "commit"=>"Create Product"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:27:in `block in create'
+  [1m[36mProduct Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "this is the new product for test"], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/products_controller.rb:27:in `block in create'
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 9.8ms | Allocations: 2112)
+  Rendered products/new.html.erb within layouts/application (Duration: 10.9ms | Allocations: 2218)
+  Rendered layouts/_cart.html.erb (Duration: 0.2ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 19.4ms | Allocations: 3134)
+Completed 422 Unprocessable Entity in 44ms (Views: 23.4ms | ActiveRecord: 1.2ms | Allocations: 7022)
+
+
+Started POST "/products" for ::1 at 2023-07-11 13:13:59 +0600
+Processing by ProductsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "product"=>{"title"=>"this is the new product for test", "description"=>"this is totally in testing phase use this product for only $1 and give us the chance to improve our product", "image_url"=>"maapis.jpg", "price"=>"1"}, "commit"=>"Create Product"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:27:in `block in create'
+  [1m[36mProduct Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? LIMIT ?[0m  [["title", "this is the new product for test"], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:27:in `block in create'
+  [1m[36mProduct Create (1.6ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "image_url", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "this is the new product for test"], ["description", "this is totally in testing phase use this product for only $1 and give us the chance to improve our product"], ["image_url", "maapis.jpg"], ["price", 1.0], ["created_at", "2023-07-11 07:13:59.747339"], ["updated_at", "2023-07-11 07:13:59.747339"]]
+  ↳ app/controllers/products_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (31.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:27:in `block in create'
+Redirected to http://localhost:3000/products/6
+Completed 302 Found in 55ms (ActiveRecord: 33.0ms | Allocations: 4265)
+
+
+Started GET "/products/6" for ::1 at 2023-07-11 13:13:59 +0600
+Processing by ProductsController#show as TURBO_STREAM
+  Parameters: {"id"=>"6"}
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:65:in `set_product'
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 3.4ms | Allocations: 297)
+  Rendered products/show.html.erb within layouts/application (Duration: 15.2ms | Allocations: 1342)
+  Rendered layouts/_cart.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 24.6ms | Allocations: 2231)
+Completed 200 OK in 34ms (Views: 26.5ms | ActiveRecord: 0.8ms | Allocations: 3747)
+
+
+Started GET "/products" for ::1 at 2023-07-11 13:14:02 +0600
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:24
+  Rendered products/index.html.erb within layouts/application (Duration: 19.6ms | Allocations: 3729)
+  Rendered layouts/_cart.html.erb (Duration: 0.1ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 21.9ms | Allocations: 4617)
+Completed 200 OK in 23ms (Views: 22.4ms | ActiveRecord: 0.2ms | Allocations: 4908)
+
+
+Started GET "/products/6/edit" for ::1 at 2023-07-11 13:14:30 +0600
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:65:in `set_product'
+  Rendering layout layouts/application.html.erb
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 5.3ms | Allocations: 1586)
+  Rendered products/edit.html.erb within layouts/application (Duration: 7.6ms | Allocations: 1875)
+  Rendered layouts/_cart.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 10.8ms | Allocations: 2764)
+Completed 200 OK in 14ms (Views: 11.5ms | ActiveRecord: 0.2ms | Allocations: 3564)
+
+
+Started PATCH "/products/6" for ::1 at 2023-07-11 13:14:37 +0600
+Processing by ProductsController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "product"=>{"title"=>"this is the new product for test", "description"=>"this is totally in testing phase use this product for only $1 and give us the chance to improve our product", "image_url"=>"lorem.jpg", "price"=>"1.0"}, "commit"=>"Update Product", "id"=>"6"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:65:in `set_product'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:40:in `block in update'
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."title" = ? AND "products"."id" != ? LIMIT ?[0m  [["title", "this is the new product for test"], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:40:in `block in update'
+  [1m[36mProduct Update (0.5ms)[0m  [1m[33mUPDATE "products" SET "image_url" = ?, "updated_at" = ? WHERE "products"."id" = ?[0m  [["image_url", "lorem.jpg"], ["updated_at", "2023-07-11 07:14:37.115615"], ["id", 6]]
+  ↳ app/controllers/products_controller.rb:40:in `block in update'
+  [1m[36mTRANSACTION (18.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:40:in `block in update'
+[ActiveJob] Enqueued Turbo::Streams::ActionBroadcastJob (Job ID: 2e8b9365-25c9-4047-b9be-7d0eff38c24c) to Async(default) with arguments: "products", {:action=>:replace, :target=>#<GlobalID:0x00007fbd36a9ad80 @uri=#<URI::GID gid://depot/Product/6>>, :targets=>nil, :partial=>"store/product", :locals=>{:product=>#<GlobalID:0x00007fbd36a9a880 @uri=#<URI::GID gid://depot/Product/6>>}}
+Redirected to http://localhost:3000/products/6
+Completed 302 Found in 47ms (ActiveRecord: 19.7ms | Allocations: 7436)
+
+
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [2e8b9365-25c9-4047-b9be-7d0eff38c24c]   [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [2e8b9365-25c9-4047-b9be-7d0eff38c24c]   [1m[36mCACHE Product Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [2e8b9365-25c9-4047-b9be-7d0eff38c24c] Performing Turbo::Streams::ActionBroadcastJob (Job ID: 2e8b9365-25c9-4047-b9be-7d0eff38c24c) from Async(default) enqueued at 2023-07-11T07:14:37Z with arguments: "products", {:action=>:replace, :target=>#<GlobalID:0x00007fbd36a6ce08 @uri=#<URI::GID gid://depot/Product/6>>, :targets=>nil, :partial=>"store/product", :locals=>{:product=>#<GlobalID:0x00007fbd36a6c908 @uri=#<URI::GID gid://depot/Product/6>>}}
+Started GET "/products/6" for ::1 at 2023-07-11 13:14:37 +0600
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [2e8b9365-25c9-4047-b9be-7d0eff38c24c]   Rendered store/_product.html.erb (Duration: 6.3ms | Allocations: 731)
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [2e8b9365-25c9-4047-b9be-7d0eff38c24c] [ActionCable] Broadcasting to products: "<turbo-stream action=\"replace\" target=\"product_6\"><template><turbo-frame id=\"product_6\">\n  <li class='flex mb-6'>\n    <img class=\"object-contain w-40 h-48 shadow mr-6\" src=\"/assets/lorem-902a7fcba2fb72309a4e03f51b11df7455b49870ab7d972a13e1c80de2be8989.jpg\" />\n\n    <div>\n      <h2 ...
+[ActiveJob] [Turbo::Streams::ActionBroadcastJob] [2e8b9365-25c9-4047-b9be-7d0eff38c24c] Performed Turbo::Streams::ActionBroadcastJob (Job ID: 2e8b9365-25c9-4047-b9be-7d0eff38c24c) from Async(default) in 51.38ms
+Processing by ProductsController#show as TURBO_STREAM
+  Parameters: {"id"=>"6"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:65:in `set_product'
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 0.2ms | Allocations: 30)
+  Rendered products/show.html.erb within layouts/application (Duration: 4.8ms | Allocations: 711)
+  Rendered layouts/_cart.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 13.3ms | Allocations: 1615)
+Completed 200 OK in 17ms (Views: 14.6ms | ActiveRecord: 0.1ms | Allocations: 2469)
+
+
+Started GET "/products" for ::1 at 2023-07-11 13:14:38 +0600
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:24
+  Rendered products/index.html.erb within layouts/application (Duration: 28.9ms | Allocations: 3681)
+  Rendered layouts/_cart.html.erb (Duration: 0.3ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 38.6ms | Allocations: 4568)
+Completed 200 OK in 40ms (Views: 39.1ms | ActiveRecord: 0.3ms | Allocations: 4852)
+
+
+Started GET "/products" for ::1 at 2023-07-11 13:15:25 +0600
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:24
+  Rendered products/index.html.erb within layouts/application (Duration: 17.8ms | Allocations: 3640)
+  Rendered layouts/_cart.html.erb (Duration: 0.1ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 28.1ms | Allocations: 4527)
+Completed 200 OK in 36ms (Views: 34.2ms | ActiveRecord: 0.2ms | Allocations: 4807)
+
+
+Started GET "/products" for ::1 at 2023-07-11 13:15:28 +0600
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:24
+  Rendered products/index.html.erb within layouts/application (Duration: 16.6ms | Allocations: 3655)
+  Rendered layouts/_cart.html.erb (Duration: 0.1ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 20.7ms | Allocations: 4542)
+Completed 200 OK in 26ms (Views: 22.6ms | ActiveRecord: 0.2ms | Allocations: 4822)
+
+
+Started GET "/products" for ::1 at 2023-07-11 13:15:37 +0600
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (2.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:24
+  Rendered products/index.html.erb within layouts/application (Duration: 191.8ms | Allocations: 9774)
+  Rendered layouts/_cart.html.erb (Duration: 0.4ms | Allocations: 157)
+  Rendered layout layouts/application.html.erb (Duration: 316.4ms | Allocations: 61947)
+Completed 200 OK in 351ms (Views: 328.8ms | ActiveRecord: 3.5ms | Allocations: 67145)
+
+
+Started GET "/products/6" for ::1 at 2023-07-11 13:15:43 +0600
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:65:in `set_product'
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 15.1ms | Allocations: 361)
+  Rendered products/show.html.erb within layouts/application (Duration: 64.0ms | Allocations: 1612)
+  Rendered layouts/_cart.html.erb (Duration: 0.4ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 70.0ms | Allocations: 2537)
+Completed 200 OK in 98ms (Views: 74.6ms | ActiveRecord: 0.5ms | Allocations: 5400)
+
+
+Started GET "/products/6/edit" for ::1 at 2023-07-11 13:15:43 +0600
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:65:in `set_product'
+  Rendering layout layouts/application.html.erb
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 42.0ms | Allocations: 3781)
+  Rendered products/edit.html.erb within layouts/application (Duration: 47.0ms | Allocations: 4156)
+  Rendered layouts/_cart.html.erb (Duration: 0.3ms | Allocations: 10)
+  Rendered layout layouts/application.html.erb (Duration: 55.7ms | Allocations: 5094)
+Completed 200 OK in 82ms (Views: 59.9ms | ActiveRecord: 0.4ms | Allocations: 6028)
+
+
+Started GET "/products/new" for ::1 at 2023-07-11 13:15:45 +0600
+Processing by ProductsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 12.5ms | Allocations: 1519)
+  Rendered products/new.html.erb within layouts/application (Duration: 14.4ms | Allocations: 1760)
+  Rendered layouts/_cart.html.erb (Duration: 0.3ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 23.0ms | Allocations: 2660)
+Completed 200 OK in 28ms (Views: 25.5ms | ActiveRecord: 0.0ms | Allocations: 3100)
+
+
+Started GET "/" for ::1 at 2023-07-11 13:15:47 +0600
+Processing by StoreController#index as HTML
+  [1m[36mCart Load (0.7ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:4:in `set_cart'
+  Rendering layout layouts/application.html.erb
+  Rendering store/index.html.erb within layouts/application
+  Rendered store/_notice.html.erb (Duration: 0.8ms | Allocations: 165)
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:12
+  Rendered store/_product.html.erb (Duration: 18.9ms | Allocations: 2043)
+  Rendered store/_product.html.erb (Duration: 9.8ms | Allocations: 698)
+  Rendered store/_product.html.erb (Duration: 14.0ms | Allocations: 616)
+  Rendered store/_product.html.erb (Duration: 8.8ms | Allocations: 527)
+  Rendered store/_product.html.erb (Duration: 11.4ms | Allocations: 526)
+  Rendered store/_product.html.erb (Duration: 12.2ms | Allocations: 536)
+  Rendered store/index.html.erb within layouts/application (Duration: 113.7ms | Allocations: 7121)
+  [1m[36mLineItem Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 53], ["LIMIT", 1]]
+  ↳ app/views/layouts/_cart.html.erb:1
+  Rendered layouts/_cart.html.erb (Duration: 46.1ms | Allocations: 4432)
+  Rendered layout layouts/application.html.erb (Duration: 179.3ms | Allocations: 12513)
+Completed 200 OK in 205ms (Views: 180.5ms | ActiveRecord: 5.5ms | Allocations: 16742)
+
+
+Started GET "/cable" for ::1 at 2023-07-11 13:15:48 +0600
+Started GET "/cable" [WebSocket] for ::1 at 2023-07-11 13:15:48 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Turbo::StreamsChannel is transmitting the subscription confirmation
+Turbo::StreamsChannel is streaming from products
+Started POST "/line_items?product_id=5" for ::1 at 2023-07-11 13:16:20 +0600
+Processing by LineItemsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "product_id"=>"5"}
+  [1m[36mCart Load (0.5ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:4:in `set_cart'
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:26:in `create'
+  [1m[36mLineItem Load (0.4ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 53], ["product_id", 5], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:5:in `add_product'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:31:in `block in create'
+  [1m[36mProduct Load (1.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:31:in `block in create'
+  [1m[36mLineItem Create (1.6ms)[0m  [1m[32mINSERT INTO "line_items" ("product_id", "cart_id", "created_at", "updated_at", "quantity", "order_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["product_id", 5], ["cart_id", 53], ["created_at", "2023-07-11 07:16:20.302104"], ["updated_at", "2023-07-11 07:16:20.302104"], ["quantity", 1], ["order_id", nil]]
+  ↳ app/controllers/line_items_controller.rb:31:in `block in create'
+  [1m[36mTRANSACTION (10.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:31:in `block in create'
+  Rendering line_items/create.turbo_stream.erb
+  Rendered store/_notice.html.erb (Duration: 1.7ms | Allocations: 169)
+  [1m[36mLineItem Load (0.9ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 53]]
+  ↳ app/views/carts/_cart.html.erb:5
+  Rendered collection of line_items/_line_item.html.erb [1 times] (Duration: 2.9ms | Allocations: 444)
+  Rendered carts/_cart.html.erb (Duration: 32.5ms | Allocations: 3346)
+  Rendered layouts/_cart.html.erb (Duration: 36.8ms | Allocations: 3591)
+  Rendered line_items/create.turbo_stream.erb (Duration: 54.9ms | Allocations: 4524)
+Completed 200 OK in 158ms (Views: 58.4ms | ActiveRecord: 17.6ms | Allocations: 17103)
+
+
+Started POST "/line_items?product_id=4" for ::1 at 2023-07-11 13:16:22 +0600
+Processing by LineItemsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "product_id"=>"4"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:4:in `set_cart'
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:26:in `create'
+  [1m[36mLineItem Load (0.3ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 53], ["product_id", 4], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:5:in `add_product'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:31:in `block in create'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:31:in `block in create'
+  [1m[36mLineItem Create (2.4ms)[0m  [1m[32mINSERT INTO "line_items" ("product_id", "cart_id", "created_at", "updated_at", "quantity", "order_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["product_id", 4], ["cart_id", 53], ["created_at", "2023-07-11 07:16:22.136550"], ["updated_at", "2023-07-11 07:16:22.136550"], ["quantity", 1], ["order_id", nil]]
+  ↳ app/controllers/line_items_controller.rb:31:in `block in create'
+  [1m[36mTRANSACTION (18.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:31:in `block in create'
+  Rendering line_items/create.turbo_stream.erb
+  Rendered store/_notice.html.erb (Duration: 0.1ms | Allocations: 9)
+  [1m[36mLineItem Load (1.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 53]]
+  ↳ app/views/carts/_cart.html.erb:5
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  Rendered collection of line_items/_line_item.html.erb [2 times] (Duration: 5.1ms | Allocations: 1014)
+  Rendered carts/_cart.html.erb (Duration: 21.3ms | Allocations: 2276)
+  Rendered layouts/_cart.html.erb (Duration: 22.1ms | Allocations: 2351)
+  Rendered line_items/create.turbo_stream.erb (Duration: 26.5ms | Allocations: 2653)
+Completed 200 OK in 82ms (Views: 28.1ms | ActiveRecord: 24.0ms | Allocations: 7794)
+
+
+Started POST "/line_items?product_id=6" for ::1 at 2023-07-11 13:16:24 +0600
+Processing by LineItemsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "product_id"=>"6"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:4:in `set_cart'
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:26:in `create'
+  [1m[36mLineItem Load (0.6ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 53], ["product_id", 6], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:5:in `add_product'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:31:in `block in create'
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:31:in `block in create'
+  [1m[36mLineItem Create (0.4ms)[0m  [1m[32mINSERT INTO "line_items" ("product_id", "cart_id", "created_at", "updated_at", "quantity", "order_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["product_id", 6], ["cart_id", 53], ["created_at", "2023-07-11 07:16:24.174377"], ["updated_at", "2023-07-11 07:16:24.174377"], ["quantity", 1], ["order_id", nil]]
+  ↳ app/controllers/line_items_controller.rb:31:in `block in create'
+  [1m[36mTRANSACTION (19.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:31:in `block in create'
+  Rendering line_items/create.turbo_stream.erb
+  Rendered store/_notice.html.erb (Duration: 0.3ms | Allocations: 9)
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 53]]
+  ↳ app/views/carts/_cart.html.erb:5
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  Rendered collection of line_items/_line_item.html.erb [3 times] (Duration: 11.2ms | Allocations: 1846)
+  Rendered carts/_cart.html.erb (Duration: 20.3ms | Allocations: 3129)
+  Rendered layouts/_cart.html.erb (Duration: 21.9ms | Allocations: 3204)
+  Rendered line_items/create.turbo_stream.erb (Duration: 26.6ms | Allocations: 3506)
+Completed 200 OK in 86ms (Views: 27.9ms | ActiveRecord: 22.2ms | Allocations: 8449)
+
+
+Started POST "/line_items?product_id=3" for ::1 at 2023-07-11 13:16:31 +0600
+Processing by LineItemsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "product_id"=>"3"}
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:4:in `set_cart'
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:26:in `create'
+  [1m[36mLineItem Load (0.4ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 53], ["product_id", 3], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:5:in `add_product'
+  [1m[36mTRANSACTION (42.9ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:31:in `block in create'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:31:in `block in create'
+  [1m[36mLineItem Create (0.5ms)[0m  [1m[32mINSERT INTO "line_items" ("product_id", "cart_id", "created_at", "updated_at", "quantity", "order_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["product_id", 3], ["cart_id", 53], ["created_at", "2023-07-11 07:16:31.240410"], ["updated_at", "2023-07-11 07:16:31.240410"], ["quantity", 1], ["order_id", nil]]
+  ↳ app/controllers/line_items_controller.rb:31:in `block in create'
+  [1m[36mTRANSACTION (25.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:31:in `block in create'
+  Rendering line_items/create.turbo_stream.erb
+  Rendered store/_notice.html.erb (Duration: 0.1ms | Allocations: 9)
+  [1m[36mLineItem Load (0.5ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 53]]
+  ↳ app/views/carts/_cart.html.erb:5
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  Rendered collection of line_items/_line_item.html.erb [4 times] (Duration: 27.3ms | Allocations: 2679)
+  Rendered carts/_cart.html.erb (Duration: 39.0ms | Allocations: 3984)
+  Rendered layouts/_cart.html.erb (Duration: 39.7ms | Allocations: 4059)
+  Rendered line_items/create.turbo_stream.erb (Duration: 41.6ms | Allocations: 4361)
+Completed 200 OK in 140ms (Views: 40.2ms | ActiveRecord: 71.8ms | Allocations: 9305)
+
+
+Started POST "/line_items?product_id=1" for ::1 at 2023-07-11 13:16:33 +0600
+Processing by LineItemsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "product_id"=>"1"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:4:in `set_cart'
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:26:in `create'
+  [1m[36mLineItem Load (0.2ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 53], ["product_id", 1], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:5:in `add_product'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:31:in `block in create'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:31:in `block in create'
+  [1m[36mLineItem Create (1.2ms)[0m  [1m[32mINSERT INTO "line_items" ("product_id", "cart_id", "created_at", "updated_at", "quantity", "order_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["product_id", 1], ["cart_id", 53], ["created_at", "2023-07-11 07:16:33.308710"], ["updated_at", "2023-07-11 07:16:33.308710"], ["quantity", 1], ["order_id", nil]]
+  ↳ app/controllers/line_items_controller.rb:31:in `block in create'
+  [1m[36mTRANSACTION (20.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:31:in `block in create'
+  Rendering line_items/create.turbo_stream.erb
+  Rendered store/_notice.html.erb (Duration: 0.1ms | Allocations: 9)
+  [1m[36mLineItem Load (1.0ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 53]]
+  ↳ app/views/carts/_cart.html.erb:5
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  Rendered collection of line_items/_line_item.html.erb [5 times] (Duration: 32.3ms | Allocations: 3511)
+  Rendered carts/_cart.html.erb (Duration: 50.6ms | Allocations: 4840)
+  Rendered layouts/_cart.html.erb (Duration: 52.1ms | Allocations: 4915)
+  Rendered line_items/create.turbo_stream.erb (Duration: 55.4ms | Allocations: 5217)
+Completed 200 OK in 114ms (Views: 54.6ms | ActiveRecord: 25.7ms | Allocations: 10177)
+
+
+Started POST "/line_items?product_id=2" for ::1 at 2023-07-11 13:16:35 +0600
+Processing by LineItemsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "product_id"=>"2"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:4:in `set_cart'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:26:in `create'
+  [1m[36mLineItem Load (0.5ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 53], ["product_id", 2], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:5:in `add_product'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:31:in `block in create'
+  [1m[36mProduct Load (1.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:31:in `block in create'
+  [1m[36mLineItem Create (0.8ms)[0m  [1m[32mINSERT INTO "line_items" ("product_id", "cart_id", "created_at", "updated_at", "quantity", "order_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["product_id", 2], ["cart_id", 53], ["created_at", "2023-07-11 07:16:35.201171"], ["updated_at", "2023-07-11 07:16:35.201171"], ["quantity", 1], ["order_id", nil]]
+  ↳ app/controllers/line_items_controller.rb:31:in `block in create'
+  [1m[36mTRANSACTION (18.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:31:in `block in create'
+  Rendering line_items/create.turbo_stream.erb
+  Rendered store/_notice.html.erb (Duration: 0.2ms | Allocations: 9)
+  [1m[36mLineItem Load (0.4ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 53]]
+  ↳ app/views/carts/_cart.html.erb:5
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  Rendered collection of line_items/_line_item.html.erb [6 times] (Duration: 33.7ms | Allocations: 4342)
+  Rendered carts/_cart.html.erb (Duration: 43.6ms | Allocations: 5689)
+  Rendered layouts/_cart.html.erb (Duration: 45.0ms | Allocations: 5764)
+  Rendered line_items/create.turbo_stream.erb (Duration: 49.4ms | Allocations: 6066)
+Completed 200 OK in 106ms (Views: 49.0ms | ActiveRecord: 23.6ms | Allocations: 11014)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20230711071928)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "password_digest" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230711071928"]]
+  [1m[36mTRANSACTION (10.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/cable" for ::1 at 2023-07-11 13:21:23 +0600
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/cable" [WebSocket] for ::1 at 2023-07-11 13:21:23 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Finished "/cable" [WebSocket] for ::1 at 2023-07-11 13:21:23 +0600
+Started GET "/cable" for ::1 at 2023-07-11 13:21:23 +0600
+Started GET "/cable" [WebSocket] for ::1 at 2023-07-11 13:21:23 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Turbo::StreamsChannel is transmitting the subscription confirmation
+Turbo::StreamsChannel is streaming from products
+Started GET "/" for ::1 at 2023-07-11 13:21:28 +0600
+Processing by StoreController#index as HTML
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:4:in `set_cart'
+  Rendering layout layouts/application.html.erb
+  Rendering store/index.html.erb within layouts/application
+  Rendered store/_notice.html.erb (Duration: 2.0ms | Allocations: 192)
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:12
+  Rendered store/_product.html.erb (Duration: 27.8ms | Allocations: 3049)
+  Rendered store/_product.html.erb (Duration: 3.5ms | Allocations: 698)
+  Rendered store/_product.html.erb (Duration: 8.1ms | Allocations: 616)
+  Rendered store/_product.html.erb (Duration: 2.6ms | Allocations: 529)
+  Rendered store/_product.html.erb (Duration: 4.6ms | Allocations: 526)
+  Rendered store/_product.html.erb (Duration: 4.3ms | Allocations: 536)
+  Rendered store/index.html.erb within layouts/application (Duration: 87.4ms | Allocations: 11237)
+  [1m[36mLineItem Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 53], ["LIMIT", 1]]
+  ↳ app/views/layouts/_cart.html.erb:1
+  [1m[36mLineItem Load (0.3ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 53]]
+  ↳ app/views/carts/_cart.html.erb:5
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  Rendered collection of line_items/_line_item.html.erb [6 times] (Duration: 46.7ms | Allocations: 7195)
+  Rendered carts/_cart.html.erb (Duration: 69.2ms | Allocations: 13820)
+  Rendered layouts/_cart.html.erb (Duration: 81.9ms | Allocations: 18648)
+  Rendered layout layouts/application.html.erb (Duration: 292.4ms | Allocations: 81507)
+Completed 200 OK in 355ms (Views: 287.2ms | ActiveRecord: 10.7ms | Allocations: 93394)
+
+
+Started GET "/cable" for ::1 at 2023-07-11 13:21:29 +0600
+Started GET "/cable" [WebSocket] for ::1 at 2023-07-11 13:21:29 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Turbo::StreamsChannel is transmitting the subscription confirmation
+Turbo::StreamsChannel is streaming from products
+Started GET "/users" for ::1 at 2023-07-11 13:21:36 +0600
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:12
+  Rendered collection of templates [0 times] (Duration: 0.4ms | Allocations: 27)
+  Rendered users/index.html.erb within layouts/application (Duration: 16.7ms | Allocations: 1373)
+  Rendered layouts/_cart.html.erb (Duration: 0.2ms | Allocations: 12)
+  Rendered layout layouts/application.html.erb (Duration: 30.6ms | Allocations: 2426)
+Completed 200 OK in 49ms (Views: 33.3ms | ActiveRecord: 0.4ms | Allocations: 3899)
+
+
+Finished "/cable" [WebSocket] for ::1 at 2023-07-11 13:21:36 +0600
+Turbo::StreamsChannel stopped streaming from products
+Started GET "/users/new" for ::1 at 2023-07-11 13:21:38 +0600
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 23.8ms | Allocations: 2684)
+  Rendered users/new.html.erb within layouts/application (Duration: 28.5ms | Allocations: 2983)
+  Rendered layouts/_cart.html.erb (Duration: 0.1ms | Allocations: 10)
+  Rendered layout layouts/application.html.erb (Duration: 36.1ms | Allocations: 3931)
+Completed 200 OK in 51ms (Views: 38.7ms | ActiveRecord: 0.9ms | Allocations: 6669)
+
+
+Started GET "/users/new" for ::1 at 2023-07-11 13:23:23 +0600
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 4.9ms | Allocations: 1803)
+  Rendered users/new.html.erb within layouts/application (Duration: 6.5ms | Allocations: 2124)
+  Rendered layouts/_cart.html.erb (Duration: 0.8ms | Allocations: 139)
+  Rendered layout layouts/application.html.erb (Duration: 14.2ms | Allocations: 3686)
+Completed 200 OK in 20ms (Views: 16.4ms | ActiveRecord: 0.0ms | Allocations: 4574)
+
+
+Started GET "/users/new" for ::1 at 2023-07-11 13:24:41 +0600
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 13.0ms | Allocations: 1804)
+  Rendered users/new.html.erb within layouts/application (Duration: 15.8ms | Allocations: 2128)
+  Rendered layouts/_cart.html.erb (Duration: 2.6ms | Allocations: 139)
+  Rendered layout layouts/application.html.erb (Duration: 29.0ms | Allocations: 3689)
+Completed 200 OK in 40ms (Views: 35.8ms | ActiveRecord: 0.0ms | Allocations: 4543)
+
+
+Started GET "/cable" for ::1 at 2023-07-11 14:36:09 +0600
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/cable" [WebSocket] for ::1 at 2023-07-11 14:36:09 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Finished "/cable" [WebSocket] for ::1 at 2023-07-11 14:36:09 +0600
+Started GET "/cable" for ::1 at 2023-07-11 14:36:09 +0600
+Started GET "/cable" [WebSocket] for ::1 at 2023-07-11 14:36:09 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Turbo::StreamsChannel is transmitting the subscription confirmation
+Turbo::StreamsChannel is streaming from products
+Started GET "/" for ::1 at 2023-07-11 14:36:10 +0600
+Processing by StoreController#index as HTML
+  [1m[36mCart Load (1.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:4:in `set_cart'
+  Rendering layout layouts/application.html.erb
+  Rendering store/index.html.erb within layouts/application
+  Rendered store/_notice.html.erb (Duration: 0.9ms | Allocations: 192)
+  [1m[36mProduct Load (3.6ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:12
+  Rendered store/_product.html.erb (Duration: 43.8ms | Allocations: 3049)
+  Rendered store/_product.html.erb (Duration: 7.0ms | Allocations: 698)
+  Rendered store/_product.html.erb (Duration: 8.3ms | Allocations: 616)
+  Rendered store/_product.html.erb (Duration: 6.7ms | Allocations: 529)
+  Rendered store/_product.html.erb (Duration: 8.4ms | Allocations: 526)
+  Rendered store/_product.html.erb (Duration: 12.9ms | Allocations: 536)
+  Rendered store/index.html.erb within layouts/application (Duration: 164.1ms | Allocations: 11239)
+  [1m[36mLineItem Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 53], ["LIMIT", 1]]
+  ↳ app/views/layouts/_cart.html.erb:1
+  [1m[36mLineItem Load (0.3ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 53]]
+  ↳ app/views/carts/_cart.html.erb:5
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  Rendered collection of line_items/_line_item.html.erb [6 times] (Duration: 50.7ms | Allocations: 7192)
+  Rendered carts/_cart.html.erb (Duration: 79.2ms | Allocations: 13816)
+  Rendered layouts/_cart.html.erb (Duration: 99.5ms | Allocations: 18644)
+  Rendered layout layouts/application.html.erb (Duration: 474.7ms | Allocations: 81684)
+Completed 200 OK in 548ms (Views: 481.6ms | ActiveRecord: 13.7ms | Allocations: 93567)
+
+
+Finished "/cable" [WebSocket] for ::1 at 2023-07-11 14:36:11 +0600
+Turbo::StreamsChannel stopped streaming from products
+Started GET "/cable" for ::1 at 2023-07-11 14:36:12 +0600
+Started GET "/cable" [WebSocket] for ::1 at 2023-07-11 14:36:12 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Turbo::StreamsChannel is transmitting the subscription confirmation
+Turbo::StreamsChannel is streaming from products
+Started GET "/users/new" for ::1 at 2023-07-11 14:36:23 +0600
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 8.9ms | Allocations: 2139)
+  Rendered users/new.html.erb within layouts/application (Duration: 12.8ms | Allocations: 2497)
+  Rendered layouts/_cart.html.erb (Duration: 0.0ms | Allocations: 11)
+  Rendered layout layouts/application.html.erb (Duration: 16.4ms | Allocations: 3535)
+Completed 200 OK in 65ms (Views: 25.3ms | ActiveRecord: 4.3ms | Allocations: 7320)
+
+
+Finished "/cable" [WebSocket] for ::1 at 2023-07-11 14:36:24 +0600
+Turbo::StreamsChannel stopped streaming from products
+Started POST "/users" for ::1 at 2023-07-11 14:36:40 +0600
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"ismail", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:27:in `block in create'
+  [1m[36mUser Create (3.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "ismail"], ["password_digest", "[FILTERED]"], ["created_at", "2023-07-11 08:36:40.981109"], ["updated_at", "2023-07-11 08:36:40.981109"]]
+  ↳ app/controllers/users_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (9.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:27:in `block in create'
+Redirected to http://localhost:3000/users
+Completed 302 Found in 316ms (ActiveRecord: 13.0ms | Allocations: 3877)
+
+
+Started GET "/users" for ::1 at 2023-07-11 14:36:41 +0600
+Processing by UsersController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."name" ASC[0m
+  ↳ app/views/users/index.html.erb:12
+  Rendered collection of users/_user.html.erb [1 times] (Duration: 1.7ms | Allocations: 350)
+  Rendered users/index.html.erb within layouts/application (Duration: 13.5ms | Allocations: 1771)
+  Rendered layouts/_cart.html.erb (Duration: 0.3ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 18.4ms | Allocations: 2703)
+Completed 200 OK in 23ms (Views: 20.1ms | ActiveRecord: 0.3ms | Allocations: 3283)
+
+
+Started GET "/users/new" for ::1 at 2023-07-11 14:41:10 +0600
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 199.8ms | Allocations: 1027)
+  Rendered users/new.html.erb within layouts/application (Duration: 201.9ms | Allocations: 1125)
+  Rendered layouts/_cart.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 204.8ms | Allocations: 2022)
+Completed 200 OK in 228ms (Views: 210.2ms | ActiveRecord: 0.0ms | Allocations: 2306)
+
+
+Started GET "/" for ::1 at 2023-07-11 15:01:34 +0600
+Processing by StoreController#index as HTML
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:4:in `set_cart'
+  Rendering layout layouts/application.html.erb
+  Rendering store/index.html.erb within layouts/application
+  Rendered store/_notice.html.erb (Duration: 0.9ms | Allocations: 162)
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:12
+  Rendered store/_product.html.erb (Duration: 4.2ms | Allocations: 1131)
+  Rendered store/_product.html.erb (Duration: 2.2ms | Allocations: 616)
+  Rendered store/_product.html.erb (Duration: 1.5ms | Allocations: 616)
+  Rendered store/_product.html.erb (Duration: 4.3ms | Allocations: 527)
+  Rendered store/_product.html.erb (Duration: 2.3ms | Allocations: 526)
+  Rendered store/_product.html.erb (Duration: 2.0ms | Allocations: 536)
+  Rendered store/index.html.erb within layouts/application (Duration: 35.1ms | Allocations: 7236)
+  [1m[36mLineItem Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 53], ["LIMIT", 1]]
+  ↳ app/views/layouts/_cart.html.erb:1
+  [1m[36mLineItem Load (0.4ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 53]]
+  ↳ app/views/carts/_cart.html.erb:5
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  Rendered collection of line_items/_line_item.html.erb [6 times] (Duration: 20.4ms | Allocations: 6921)
+  Rendered carts/_cart.html.erb (Duration: 30.6ms | Allocations: 11628)
+  Rendered layouts/_cart.html.erb (Duration: 39.9ms | Allocations: 14826)
+  Rendered layout layouts/application.html.erb (Duration: 98.7ms | Allocations: 33986)
+Completed 200 OK in 128ms (Views: 98.5ms | ActiveRecord: 4.4ms | Allocations: 39584)
+
+
+Started GET "/sessions" for ::1 at 2023-07-11 15:01:39 +0600
+  
+ActionController::RoutingError (No route matches [GET] "/sessions"):
+  
+Started GET "/session" for ::1 at 2023-07-11 15:01:44 +0600
+  
+ActionController::RoutingError (No route matches [GET] "/session"):
+  
+Started GET "/products" for ::1 at 2023-07-11 15:20:21 +0600
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `authorize'
+Redirected to http://localhost:3000/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 53ms (ActiveRecord: 6.2ms | Allocations: 2464)
+
+
+Started GET "/login" for ::1 at 2023-07-11 15:20:21 +0600
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 20.4ms | Allocations: 1924)
+  Rendered layouts/_cart.html.erb (Duration: 0.7ms | Allocations: 142)
+  Rendered layout layouts/application.html.erb (Duration: 102.7ms | Allocations: 14040)
+Completed 200 OK in 116ms (Views: 111.3ms | ActiveRecord: 0.0ms | Allocations: 15046)
+
+
+Started POST "/login" for ::1 at 2023-07-11 15:20:25 +0600
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "name"=>"mdshalauddin337@gmail.com", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "mdshalauddin337@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://localhost:3000/login
+Completed 302 Found in 5ms (ActiveRecord: 0.5ms | Allocations: 1160)
+
+
+Started GET "/login" for ::1 at 2023-07-11 15:20:25 +0600
+Processing by SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.3ms | Allocations: 649)
+  Rendered layouts/_cart.html.erb (Duration: 0.1ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 9.8ms | Allocations: 1585)
+Completed 200 OK in 11ms (Views: 10.5ms | ActiveRecord: 0.0ms | Allocations: 1923)
+
+
+Started POST "/login" for ::1 at 2023-07-11 15:20:26 +0600
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "name"=>"mdshalauddin337@gmail.com", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "mdshalauddin337@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://localhost:3000/login
+Completed 302 Found in 6ms (ActiveRecord: 0.1ms | Allocations: 836)
+
+
+Started GET "/login" for ::1 at 2023-07-11 15:20:26 +0600
+Processing by SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 3.6ms | Allocations: 645)
+  Rendered layouts/_cart.html.erb (Duration: 0.5ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 12.7ms | Allocations: 1538)
+Completed 200 OK in 16ms (Views: 14.4ms | ActiveRecord: 0.0ms | Allocations: 1811)
+
+
+Started POST "/login" for ::1 at 2023-07-11 15:20:27 +0600
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "name"=>"mdshalauddin337@gmail.com", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "mdshalauddin337@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://localhost:3000/login
+Completed 302 Found in 4ms (ActiveRecord: 0.2ms | Allocations: 860)
+
+
+Started GET "/login" for ::1 at 2023-07-11 15:20:27 +0600
+Processing by SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 648)
+  Rendered layouts/_cart.html.erb (Duration: 0.2ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 9.2ms | Allocations: 1541)
+Completed 200 OK in 15ms (Views: 12.6ms | ActiveRecord: 0.0ms | Allocations: 1814)
+
+
+Started POST "/login" for ::1 at 2023-07-11 15:20:34 +0600
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "name"=>"ismail", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "ismail"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 316ms (ActiveRecord: 0.2ms | Allocations: 1990)
+
+
+Started GET "/admin" for ::1 at 2023-07-11 15:20:34 +0600
+Processing by AdminController#index as TURBO_STREAM
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `authorize'
+  [1m[36mOrder Count (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders"[0m
+  ↳ app/controllers/admin_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering admin/index.html.erb within layouts/application
+  Rendered admin/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 185)
+  Rendered layouts/_cart.html.erb (Duration: 0.1ms | Allocations: 12)
+  Rendered layout layouts/application.html.erb (Duration: 8.0ms | Allocations: 1269)
+Completed 200 OK in 38ms (Views: 12.1ms | ActiveRecord: 1.9ms | Allocations: 6003)
+
+
+Started GET "/products" for ::1 at 2023-07-11 15:20:57 +0600
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `authorize'
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (2.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:24
+  Rendered products/index.html.erb within layouts/application (Duration: 54.8ms | Allocations: 5849)
+  Rendered layouts/_cart.html.erb (Duration: 0.2ms | Allocations: 12)
+  Rendered layout layouts/application.html.erb (Duration: 67.6ms | Allocations: 6845)
+Completed 200 OK in 125ms (Views: 74.2ms | ActiveRecord: 2.7ms | Allocations: 11658)
+
+
+Started GET "/admin_users/sign_in" for ::1 at 2023-07-11 15:22:31 +0600
+  
+ActionController::RoutingError (No route matches [GET] "/admin_users/sign_in"):
+  
+Started GET "/admin" for ::1 at 2023-07-11 15:22:34 +0600
+Processing by AdminController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `authorize'
+  [1m[36mOrder Count (2.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders"[0m
+  ↳ app/controllers/admin_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering admin/index.html.erb within layouts/application
+  Rendered admin/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 28)
+  Rendered layouts/_cart.html.erb (Duration: 0.1ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | Allocations: 927)
+Completed 200 OK in 17ms (Views: 5.0ms | ActiveRecord: 2.4ms | Allocations: 2393)
+
+
+Started GET "/users/new" for ::1 at 2023-07-11 15:22:45 +0600
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `authorize'
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 4.4ms | Allocations: 1345)
+  Rendered users/new.html.erb within layouts/application (Duration: 5.8ms | Allocations: 1683)
+  Rendered layouts/_cart.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 2702)
+Completed 200 OK in 18ms (Views: 10.1ms | ActiveRecord: 0.4ms | Allocations: 4318)
+
+
+Started GET "/users/destroy" for ::1 at 2023-07-11 15:22:54 +0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"destroy"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `authorize'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:67:in `set_user'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.5ms | Allocations: 2244)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=destroy):
+  
+app/controllers/users_controller.rb:67:in `set_user'
+Started GET "/users/2/destroy" for ::1 at 2023-07-11 15:23:09 +0600
+  
+ActionController::RoutingError (No route matches [GET] "/users/2/destroy"):
+  
+Started GET "/users/1/destroy" for ::1 at 2023-07-11 15:23:15 +0600
+  
+ActionController::RoutingError (No route matches [GET] "/users/1/destroy"):
+  
+Started GET "/user/2/destroy" for ::1 at 2023-07-11 15:23:29 +0600
+  
+ActionController::RoutingError (No route matches [GET] "/user/2/destroy"):
+  
+Started GET "/admin" for ::1 at 2023-07-11 15:30:29 +0600
+Processing by AdminController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `authorize'
+  [1m[36mOrder Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders"[0m
+  ↳ app/controllers/admin_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering admin/index.html.erb within layouts/application
+  Rendered admin/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 180)
+  Rendered layouts/_cart.html.erb (Duration: 2.2ms | Allocations: 142)
+  Rendered layout layouts/application.html.erb (Duration: 23.1ms | Allocations: 2199)
+Completed 200 OK in 49ms (Views: 33.4ms | ActiveRecord: 2.2ms | Allocations: 4343)
+
+
+Started DELETE "/logout" for ::1 at 2023-07-11 15:30:31 +0600
+Processing by SessionsController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 0.0ms | Allocations: 473)
+
+
+Started GET "/" for ::1 at 2023-07-11 15:30:31 +0600
+Processing by StoreController#index as TURBO_STREAM
+  [1m[36mCart Load (1.6ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:4:in `set_cart'
+  Rendering layout layouts/application.html.erb
+  Rendering store/index.html.erb within layouts/application
+  Rendered store/_notice.html.erb (Duration: 1.8ms | Allocations: 169)
+  [1m[36mProduct Load (2.5ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:12
+  Rendered store/_product.html.erb (Duration: 15.5ms | Allocations: 1111)
+  Rendered store/_product.html.erb (Duration: 5.9ms | Allocations: 616)
+  Rendered store/_product.html.erb (Duration: 11.1ms | Allocations: 616)
+  Rendered store/_product.html.erb (Duration: 5.4ms | Allocations: 527)
+  Rendered store/_product.html.erb (Duration: 1.6ms | Allocations: 526)
+  Rendered store/_product.html.erb (Duration: 3.1ms | Allocations: 536)
+  Rendered store/index.html.erb within layouts/application (Duration: 68.0ms | Allocations: 5809)
+  [1m[36mLineItem Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 53], ["LIMIT", 1]]
+  ↳ app/views/layouts/_cart.html.erb:1
+  [1m[36mLineItem Load (0.4ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 53]]
+  ↳ app/views/carts/_cart.html.erb:5
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  Rendered collection of line_items/_line_item.html.erb [6 times] (Duration: 57.9ms | Allocations: 6920)
+  Rendered carts/_cart.html.erb (Duration: 82.9ms | Allocations: 11627)
+  Rendered layouts/_cart.html.erb (Duration: 112.7ms | Allocations: 14691)
+  Rendered layout layouts/application.html.erb (Duration: 190.5ms | Allocations: 21459)
+Completed 200 OK in 214ms (Views: 188.3ms | ActiveRecord: 7.2ms | Allocations: 25361)
+
+
+Started GET "/cable" for ::1 at 2023-07-11 15:30:32 +0600
+Started GET "/cable" [WebSocket] for ::1 at 2023-07-11 15:30:32 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Turbo::StreamsChannel is transmitting the subscription confirmation
+Turbo::StreamsChannel is streaming from products
+Started GET "/" for ::1 at 2023-07-11 15:30:36 +0600
+Processing by StoreController#index as HTML
+  [1m[36mCart Load (2.0ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:4:in `set_cart'
+  Rendering layout layouts/application.html.erb
+  Rendering store/index.html.erb within layouts/application
+  Rendered store/_notice.html.erb (Duration: 0.3ms | Allocations: 29)
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:12
+  Rendered store/_product.html.erb (Duration: 10.5ms | Allocations: 780)
+  Rendered store/_product.html.erb (Duration: 5.9ms | Allocations: 616)
+  Rendered store/_product.html.erb (Duration: 76.8ms | Allocations: 616)
+  Rendered store/_product.html.erb (Duration: 49.1ms | Allocations: 527)
+  Rendered store/_product.html.erb (Duration: 50.8ms | Allocations: 526)
+  Rendered store/_product.html.erb (Duration: 25.7ms | Allocations: 536)
+  Rendered store/index.html.erb within layouts/application (Duration: 237.8ms | Allocations: 4798)
+  [1m[36mLineItem Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 53], ["LIMIT", 1]]
+  ↳ app/views/layouts/_cart.html.erb:1
+  [1m[36mLineItem Load (0.3ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 53]]
+  ↳ app/views/carts/_cart.html.erb:5
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (1.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  Rendered collection of line_items/_line_item.html.erb [6 times] (Duration: 197.9ms | Allocations: 5136)
+  Rendered carts/_cart.html.erb (Duration: 248.0ms | Allocations: 6424)
+  Rendered layouts/_cart.html.erb (Duration: 297.2ms | Allocations: 7253)
+  Rendered layout layouts/application.html.erb (Duration: 614.1ms | Allocations: 12951)
+Completed 200 OK in 630ms (Views: 611.8ms | ActiveRecord: 6.5ms | Allocations: 14043)
+
+
+Finished "/cable" [WebSocket] for ::1 at 2023-07-11 15:30:37 +0600
+Turbo::StreamsChannel stopped streaming from products
+Started GET "/cable" for ::1 at 2023-07-11 15:30:38 +0600
+Started GET "/cable" [WebSocket] for ::1 at 2023-07-11 15:30:38 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Turbo::StreamsChannel is transmitting the subscription confirmation
+Turbo::StreamsChannel is streaming from products
+Started GET "/cable" for ::1 at 2023-07-11 15:33:58 +0600
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/cable" [WebSocket] for ::1 at 2023-07-11 15:33:58 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Turbo::StreamsChannel is transmitting the subscription confirmation
+Turbo::StreamsChannel is streaming from products
+Started GET "/" for ::1 at 2023-07-11 15:33:58 +0600
+Processing by StoreController#index as HTML
+  [1m[36mCart Load (0.7ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:4:in `set_cart'
+  Rendering layout layouts/application.html.erb
+  Rendering store/index.html.erb within layouts/application
+  Rendered store/_notice.html.erb (Duration: 2.4ms | Allocations: 192)
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:12
+  Rendered store/_product.html.erb (Duration: 52.7ms | Allocations: 3052)
+  Rendered store/_product.html.erb (Duration: 2.0ms | Allocations: 698)
+  Rendered store/_product.html.erb (Duration: 6.4ms | Allocations: 616)
+  Rendered store/_product.html.erb (Duration: 4.7ms | Allocations: 529)
+  Rendered store/_product.html.erb (Duration: 6.4ms | Allocations: 526)
+  Rendered store/_product.html.erb (Duration: 9.1ms | Allocations: 536)
+  Rendered store/index.html.erb within layouts/application (Duration: 158.8ms | Allocations: 11248)
+  [1m[36mLineItem Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 53], ["LIMIT", 1]]
+  ↳ app/views/layouts/_cart.html.erb:1
+  [1m[36mLineItem Load (0.6ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 53]]
+  ↳ app/views/carts/_cart.html.erb:5
+  [1m[36mProduct Load (1.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  Rendered collection of line_items/_line_item.html.erb [6 times] (Duration: 52.0ms | Allocations: 7192)
+  Rendered carts/_cart.html.erb (Duration: 85.7ms | Allocations: 13855)
+  Rendered layouts/_cart.html.erb (Duration: 102.5ms | Allocations: 18687)
+  Rendered layout layouts/application.html.erb (Duration: 428.4ms | Allocations: 81594)
+Completed 200 OK in 539ms (Views: 434.9ms | ActiveRecord: 17.9ms | Allocations: 93517)
+
+
+Finished "/cable" [WebSocket] for ::1 at 2023-07-11 15:33:59 +0600
+Turbo::StreamsChannel stopped streaming from products
+Started GET "/cable" for ::1 at 2023-07-11 15:34:00 +0600
+Started GET "/cable" [WebSocket] for ::1 at 2023-07-11 15:34:00 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Turbo::StreamsChannel is transmitting the subscription confirmation
+Turbo::StreamsChannel is streaming from products
+Started GET "/products" for ::1 at 2023-07-11 15:34:04 +0600
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `authorize'
+Redirected to http://localhost:3000/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 23ms (ActiveRecord: 2.9ms | Allocations: 2489)
+
+
+Started GET "/login" for ::1 at 2023-07-11 15:34:04 +0600
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 4.9ms | Allocations: 1921)
+  Rendered layouts/_cart.html.erb (Duration: 0.3ms | Allocations: 12)
+  Rendered layout layouts/application.html.erb (Duration: 17.1ms | Allocations: 2943)
+Completed 200 OK in 20ms (Views: 19.0ms | ActiveRecord: 0.0ms | Allocations: 3751)
+
+
+Finished "/cable" [WebSocket] for ::1 at 2023-07-11 15:34:05 +0600
+Turbo::StreamsChannel stopped streaming from products
+Started POST "/login" for ::1 at 2023-07-11 15:34:13 +0600
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "name"=>"ismail", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "ismail"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 297ms (ActiveRecord: 1.3ms | Allocations: 3377)
+
+
+Started GET "/admin" for ::1 at 2023-07-11 15:34:14 +0600
+Processing by AdminController#index as TURBO_STREAM
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `authorize'
+  [1m[36mOrder Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders"[0m
+  ↳ app/controllers/admin_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering admin/index.html.erb within layouts/application
+  Rendered admin/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 181)
+  Rendered layouts/_cart.html.erb (Duration: 0.3ms | Allocations: 12)
+  Rendered layout layouts/application.html.erb (Duration: 11.1ms | Allocations: 1681)
+Completed 200 OK in 36ms (Views: 16.7ms | ActiveRecord: 1.6ms | Allocations: 6488)
+
+
+Started GET "/users" for ::1 at 2023-07-11 15:34:21 +0600
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `authorize'
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."name" ASC[0m
+  ↳ app/views/users/index.html.erb:12
+  Rendered collection of users/_user.html.erb [1 times] (Duration: 2.3ms | Allocations: 362)
+  Rendered users/index.html.erb within layouts/application (Duration: 6.9ms | Allocations: 1624)
+  Rendered layouts/_cart.html.erb (Duration: 0.4ms | Allocations: 11)
+  Rendered layout layouts/application.html.erb (Duration: 13.5ms | Allocations: 3002)
+Completed 200 OK in 19ms (Views: 15.1ms | ActiveRecord: 0.3ms | Allocations: 4683)
+
+
+Started GET "/products" for ::1 at 2023-07-11 15:34:23 +0600
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `authorize'
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:24
+  Rendered products/index.html.erb within layouts/application (Duration: 36.4ms | Allocations: 4263)
+  Rendered layouts/_cart.html.erb (Duration: 0.1ms | Allocations: 12)
+  Rendered layout layouts/application.html.erb (Duration: 42.4ms | Allocations: 5586)
+Completed 200 OK in 52ms (Views: 46.7ms | ActiveRecord: 0.5ms | Allocations: 6999)
+
+
+Started GET "/orders" for ::1 at 2023-07-11 15:34:25 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `authorize'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.8ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/views/orders/index.html.erb:12
+  Rendered collection of orders/_order.html.erb [7 times] (Duration: 7.0ms | Allocations: 1090)
+  Rendered orders/index.html.erb within layouts/application (Duration: 29.6ms | Allocations: 5253)
+  Rendered layouts/_cart.html.erb (Duration: 0.1ms | Allocations: 11)
+  Rendered layout layouts/application.html.erb (Duration: 37.7ms | Allocations: 6631)
+Completed 200 OK in 51ms (Views: 37.6ms | ActiveRecord: 2.8ms | Allocations: 8292)
+
+
+Started DELETE "/logout" for ::1 at 2023-07-11 15:34:28 +0600
+Processing by SessionsController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 438)
+
+
+Started GET "/" for ::1 at 2023-07-11 15:34:28 +0600
+Processing by StoreController#index as TURBO_STREAM
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:4:in `set_cart'
+  Rendering layout layouts/application.html.erb
+  Rendering store/index.html.erb within layouts/application
+  Rendered store/_notice.html.erb (Duration: 0.1ms | Allocations: 27)
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:12
+  Rendered store/_product.html.erb (Duration: 5.6ms | Allocations: 737)
+  Rendered store/_product.html.erb (Duration: 5.1ms | Allocations: 616)
+  Rendered store/_product.html.erb (Duration: 1.7ms | Allocations: 616)
+  Rendered store/_product.html.erb (Duration: 6.7ms | Allocations: 527)
+  Rendered store/_product.html.erb (Duration: 3.4ms | Allocations: 526)
+  Rendered store/_product.html.erb (Duration: 2.8ms | Allocations: 536)
+  Rendered store/index.html.erb within layouts/application (Duration: 34.9ms | Allocations: 4707)
+  [1m[36mLineItem Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 53], ["LIMIT", 1]]
+  ↳ app/views/layouts/_cart.html.erb:1
+  [1m[36mLineItem Load (0.2ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 53]]
+  ↳ app/views/carts/_cart.html.erb:5
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  Rendered collection of line_items/_line_item.html.erb [6 times] (Duration: 43.1ms | Allocations: 5099)
+  Rendered carts/_cart.html.erb (Duration: 53.3ms | Allocations: 6372)
+  Rendered layouts/_cart.html.erb (Duration: 59.5ms | Allocations: 7197)
+  Rendered layout layouts/application.html.erb (Duration: 103.0ms | Allocations: 12787)
+Completed 200 OK in 112ms (Views: 102.4ms | ActiveRecord: 3.0ms | Allocations: 13792)
+
+
+Started GET "/cable" for ::1 at 2023-07-11 15:34:28 +0600
+Started GET "/cable" [WebSocket] for ::1 at 2023-07-11 15:34:28 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Turbo::StreamsChannel is transmitting the subscription confirmation
+Turbo::StreamsChannel is streaming from products
+Started GET "/admin" for ::1 at 2023-07-11 15:34:36 +0600
+Processing by AdminController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `authorize'
+Redirected to http://localhost:3000/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 6ms (ActiveRecord: 0.5ms | Allocations: 987)
+
+
+Started GET "/login" for ::1 at 2023-07-11 15:34:36 +0600
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 6.2ms | Allocations: 643)
+  Rendered layouts/_cart.html.erb (Duration: 0.2ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 15.8ms | Allocations: 1536)
+Completed 200 OK in 20ms (Views: 18.3ms | ActiveRecord: 0.0ms | Allocations: 1805)
+
+
+Finished "/cable" [WebSocket] for ::1 at 2023-07-11 15:34:37 +0600
+Turbo::StreamsChannel stopped streaming from products
+Started GET "/" for ::1 at 2023-07-11 15:34:40 +0600
+Processing by StoreController#index as HTML
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:4:in `set_cart'
+  Rendering layout layouts/application.html.erb
+  Rendering store/index.html.erb within layouts/application
+  Rendered store/_notice.html.erb (Duration: 0.1ms | Allocations: 22)
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:12
+  Rendered store/_product.html.erb (Duration: 6.7ms | Allocations: 636)
+  Rendered store/_product.html.erb (Duration: 6.4ms | Allocations: 616)
+  Rendered store/_product.html.erb (Duration: 2.7ms | Allocations: 616)
+  Rendered store/_product.html.erb (Duration: 5.3ms | Allocations: 526)
+  Rendered store/_product.html.erb (Duration: 5.7ms | Allocations: 526)
+  Rendered store/_product.html.erb (Duration: 6.3ms | Allocations: 536)
+  Rendered store/index.html.erb within layouts/application (Duration: 44.3ms | Allocations: 4586)
+  [1m[36mLineItem Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 53], ["LIMIT", 1]]
+  ↳ app/views/layouts/_cart.html.erb:1
+  [1m[36mLineItem Load (0.8ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 53]]
+  ↳ app/views/carts/_cart.html.erb:5
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  Rendered collection of line_items/_line_item.html.erb [6 times] (Duration: 60.0ms | Allocations: 5010)
+  Rendered carts/_cart.html.erb (Duration: 74.2ms | Allocations: 6277)
+  Rendered layouts/_cart.html.erb (Duration: 87.5ms | Allocations: 7039)
+  Rendered layout layouts/application.html.erb (Duration: 145.0ms | Allocations: 12594)
+Completed 200 OK in 157ms (Views: 147.1ms | ActiveRecord: 4.5ms | Allocations: 13530)
+
+
+Started GET "/cable" for ::1 at 2023-07-11 15:34:40 +0600
+Started GET "/cable" [WebSocket] for ::1 at 2023-07-11 15:34:40 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Turbo::StreamsChannel is transmitting the subscription confirmation
+Turbo::StreamsChannel is streaming from products
+Started GET "/orders/new" for ::1 at 2023-07-11 15:34:52 +0600
+Processing by OrdersController#new as HTML
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:4:in `set_cart'
+  [1m[36mLineItem Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:85:in `ensure_cart_isnt_empty'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/_check.html.erb (Duration: 2.9ms | Allocations: 986)
+  Rendered orders/_cc.html.erb (Duration: 4.2ms | Allocations: 891)
+  Rendered orders/_po.html.erb (Duration: 5.9ms | Allocations: 618)
+  Rendered orders/_form.html.erb (Duration: 50.8ms | Allocations: 9130)
+  Rendered orders/new.html.erb within layouts/application (Duration: 53.6ms | Allocations: 9349)
+  [1m[36mCACHE LineItem Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 53], ["LIMIT", 1]]
+  ↳ app/views/layouts/_cart.html.erb:1
+  [1m[36mLineItem Load (0.6ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 53]]
+  ↳ app/views/carts/_cart.html.erb:5
+  [1m[36mProduct Load (1.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:9
+  Rendered collection of line_items/_line_item.html.erb [6 times] (Duration: 50.0ms | Allocations: 5081)
+  Rendered carts/_cart.html.erb (Duration: 62.5ms | Allocations: 6406)
+  Rendered layouts/_cart.html.erb (Duration: 71.7ms | Allocations: 7166)
+  Rendered layout layouts/application.html.erb (Duration: 128.2ms | Allocations: 17456)
+Completed 200 OK in 140ms (Views: 127.1ms | ActiveRecord: 4.0ms | Allocations: 19118)
+
+
+Unsubscribing from channel: {"channel":"Turbo::StreamsChannel","signed_stream_name":"InByb2R1Y3RzIg==--cd901dfedd6ae61328147caf4249bf162594285541d88c4b3bd19f782582a367"}
+Turbo::StreamsChannel stopped streaming from products
+Started POST "/orders" for ::1 at 2023-07-11 15:35:11 +0600
+Processing by OrdersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"Md.ismail ahmed", "address"=>"Bangladesh,Dhake,savar", "email"=>"ismail@ismail.com", "pay_type"=>"Purchase order", "po_number"=>"0147258369"}, "commit"=>"Place Order"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:4:in `set_cart'
+[31mUnpermitted parameter: :po_number. Context: { controller: OrdersController, action: create, request: #<ActionDispatch::Request:0x00007f70ca171230>, params: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"Md.ismail ahmed", "address"=>"Bangladesh,Dhake,savar", "email"=>"ismail@ismail.com", "pay_type"=>"Purchase order", "po_number"=>"0147258369"}, "commit"=>"Place Order", "controller"=>"orders", "action"=>"create"} }[0m
+  [1m[36mLineItem Load (0.2ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 53]]
+  ↳ app/models/order.rb:16:in `add_line_items_from_cart'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/orders_controller.rb:32:in `block in create'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:32:in `block in create'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:32:in `block in create'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:32:in `block in create'
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:32:in `block in create'
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:32:in `block in create'
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:32:in `block in create'
+  [1m[36mOrder Create (2.4ms)[0m  [1m[32mINSERT INTO "orders" ("name", "address", "email", "pay_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Md.ismail ahmed"], ["address", "Bangladesh,Dhake,savar"], ["email", "ismail@ismail.com"], ["pay_type", 2], ["created_at", "2023-07-11 09:35:11.356303"], ["updated_at", "2023-07-11 09:35:11.356303"]]
+  ↳ app/controllers/orders_controller.rb:32:in `block in create'
+  [1m[36mLineItem Update (1.4ms)[0m  [1m[33mUPDATE "line_items" SET "cart_id" = ?, "updated_at" = ?, "order_id" = ? WHERE "line_items"."id" = ?[0m  [["cart_id", nil], ["updated_at", "2023-07-11 09:35:11.367397"], ["order_id", 8], ["id", 27]]
+  ↳ app/controllers/orders_controller.rb:32:in `block in create'
+  [1m[36mLineItem Update (0.2ms)[0m  [1m[33mUPDATE "line_items" SET "cart_id" = ?, "updated_at" = ?, "order_id" = ? WHERE "line_items"."id" = ?[0m  [["cart_id", nil], ["updated_at", "2023-07-11 09:35:11.375193"], ["order_id", 8], ["id", 28]]
+  ↳ app/controllers/orders_controller.rb:32:in `block in create'
+  [1m[36mLineItem Update (0.6ms)[0m  [1m[33mUPDATE "line_items" SET "cart_id" = ?, "updated_at" = ?, "order_id" = ? WHERE "line_items"."id" = ?[0m  [["cart_id", nil], ["updated_at", "2023-07-11 09:35:11.382709"], ["order_id", 8], ["id", 29]]
+  ↳ app/controllers/orders_controller.rb:32:in `block in create'
+  [1m[36mLineItem Update (0.2ms)[0m  [1m[33mUPDATE "line_items" SET "cart_id" = ?, "updated_at" = ?, "order_id" = ? WHERE "line_items"."id" = ?[0m  [["cart_id", nil], ["updated_at", "2023-07-11 09:35:11.391261"], ["order_id", 8], ["id", 30]]
+  ↳ app/controllers/orders_controller.rb:32:in `block in create'
+  [1m[36mLineItem Update (1.0ms)[0m  [1m[33mUPDATE "line_items" SET "cart_id" = ?, "updated_at" = ?, "order_id" = ? WHERE "line_items"."id" = ?[0m  [["cart_id", nil], ["updated_at", "2023-07-11 09:35:11.401395"], ["order_id", 8], ["id", 31]]
+  ↳ app/controllers/orders_controller.rb:32:in `block in create'
+  [1m[36mLineItem Update (0.3ms)[0m  [1m[33mUPDATE "line_items" SET "cart_id" = ?, "updated_at" = ?, "order_id" = ? WHERE "line_items"."id" = ?[0m  [["cart_id", nil], ["updated_at", "2023-07-11 09:35:11.409954"], ["order_id", 8], ["id", 32]]
+  ↳ app/controllers/orders_controller.rb:32:in `block in create'
+  [1m[36mTRANSACTION (18.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/orders_controller.rb:32:in `block in create'
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:33:in `block in create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/orders_controller.rb:33:in `block in create'
+  [1m[36mLineItem Load (0.5ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 53]]
+  ↳ app/controllers/orders_controller.rb:33:in `block in create'
+  [1m[36mCart Destroy (0.3ms)[0m  [1m[31mDELETE FROM "carts" WHERE "carts"."id" = ?[0m  [["id", 53]]
+  ↳ app/controllers/orders_controller.rb:33:in `block in create'
+  [1m[36mTRANSACTION (23.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/orders_controller.rb:33:in `block in create'
+[31mUnpermitted parameter: :po_number. Context: { controller: OrdersController, action: create, request: #<ActionDispatch::Request:0x00007f70ca171230>, params: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"Md.ismail ahmed", "address"=>"Bangladesh,Dhake,savar", "email"=>"ismail@ismail.com", "pay_type"=>"Purchase order", "po_number"=>"0147258369"}, "commit"=>"Place Order", "controller"=>"orders", "action"=>"create"} }[0m
+[31mUnpermitted parameter: :po_number. Context: { controller: OrdersController, action: create, request: #<ActionDispatch::Request:0x00007f70ca171230>, params: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"Md.ismail ahmed", "address"=>"Bangladesh,Dhake,savar", "email"=>"ismail@ismail.com", "pay_type"=>"Purchase order", "po_number"=>"0147258369"}, "commit"=>"Place Order", "controller"=>"orders", "action"=>"create"} }[0m
+[31mUnpermitted parameter: :po_number. Context: { controller: OrdersController, action: create, request: #<ActionDispatch::Request:0x00007f70ca171230>, params: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"Md.ismail ahmed", "address"=>"Bangladesh,Dhake,savar", "email"=>"ismail@ismail.com", "pay_type"=>"Purchase order", "po_number"=>"0147258369"}, "commit"=>"Place Order", "controller"=>"orders", "action"=>"create"} }[0m
+[31mUnpermitted parameters: :name, :address, :email, :pay_type. Context: { controller: OrdersController, action: create, request: #<ActionDispatch::Request:0x00007f70ca171230>, params: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"Md.ismail ahmed", "address"=>"Bangladesh,Dhake,savar", "email"=>"ismail@ismail.com", "pay_type"=>"Purchase order", "po_number"=>"0147258369"}, "commit"=>"Place Order", "controller"=>"orders", "action"=>"create"} }[0m
+[ActiveJob] Enqueued ChargeOrderJob (Job ID: 9e24baf6-df0f-42b2-b27a-731f5242a42f) to Async(default) with arguments: #<GlobalID:0x00007f70ca03e390 @uri=#<URI::GID gid://depot/Order/8>>, {"po_number"=>"0147258369"}
+Redirected to http://localhost:3000/
+Completed 302 Found in 192ms (ActiveRecord: 51.3ms | Allocations: 23108)
+
+
+[ActiveJob] [ChargeOrderJob] [9e24baf6-df0f-42b2-b27a-731f5242a42f]   [1m[36mOrder Load (2.0ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+Started GET "/" for ::1 at 2023-07-11 15:35:11 +0600
+[ActiveJob] [ChargeOrderJob] [9e24baf6-df0f-42b2-b27a-731f5242a42f] Performing ChargeOrderJob (Job ID: 9e24baf6-df0f-42b2-b27a-731f5242a42f) from Async(default) enqueued at 2023-07-11T09:35:11Z with arguments: #<GlobalID:0x00007f70eaa60538 @uri=#<URI::GID gid://depot/Order/8>>, {"po_number"=>"0147258369"}
+[ActiveJob] [ChargeOrderJob] [9e24baf6-df0f-42b2-b27a-731f5242a42f] Processing purchase order: 0147258369
+Processing by StoreController#index as TURBO_STREAM
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/concerns/current_cart.rb:8:in `set_cart'
+  [1m[36mCart Create (0.4ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2023-07-11 09:35:11.618660"], ["updated_at", "2023-07-11 09:35:11.618660"]]
+  ↳ app/controllers/concerns/current_cart.rb:8:in `set_cart'
+  [1m[36mTRANSACTION (19.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/concerns/current_cart.rb:8:in `set_cart'
+  Rendering layout layouts/application.html.erb
+  Rendering store/index.html.erb within layouts/application
+  Rendered store/_notice.html.erb (Duration: 0.1ms | Allocations: 36)
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:12
+  Rendered store/_product.html.erb (Duration: 9.6ms | Allocations: 777)
+  Rendered store/_product.html.erb (Duration: 2.3ms | Allocations: 616)
+  Rendered store/_product.html.erb (Duration: 8.1ms | Allocations: 616)
+  Rendered store/_product.html.erb (Duration: 1.8ms | Allocations: 527)
+  Rendered store/_product.html.erb (Duration: 3.1ms | Allocations: 526)
+  Rendered store/_product.html.erb (Duration: 7.4ms | Allocations: 536)
+  Rendered store/index.html.erb within layouts/application (Duration: 45.9ms | Allocations: 4819)
+  [1m[36mLineItem Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 54], ["LIMIT", 1]]
+  ↳ app/views/layouts/_cart.html.erb:1
+  Rendered layouts/_cart.html.erb (Duration: 6.6ms | Allocations: 720)
+  Rendered layout layouts/application.html.erb (Duration: 59.2ms | Allocations: 6440)
+Completed 200 OK in 105ms (Views: 61.3ms | ActiveRecord: 21.8ms | Allocations: 9217)
+
+
+Turbo::StreamsChannel is transmitting the subscription confirmation
+Turbo::StreamsChannel is streaming from products
+[ActiveJob] [ChargeOrderJob] [9e24baf6-df0f-42b2-b27a-731f5242a42f] Done Processing Payment
+[ActiveJob] [ChargeOrderJob] [9e24baf6-df0f-42b2-b27a-731f5242a42f] Enqueued ActionMailer::MailDeliveryJob (Job ID: 1281a761-2fae-4393-a607-95d8459f4360) to Async(default) with arguments: "OrderMailer", "received", "deliver_now", {:args=>[#<GlobalID:0x00007f70e80806a0 @uri=#<URI::GID gid://depot/Order/8>>]}
+[ActiveJob] [ChargeOrderJob] [9e24baf6-df0f-42b2-b27a-731f5242a42f] Performed ChargeOrderJob (Job ID: 9e24baf6-df0f-42b2-b27a-731f5242a42f) from Async(default) in 3135.4ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1281a761-2fae-4393-a607-95d8459f4360]   [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1281a761-2fae-4393-a607-95d8459f4360] Performing ActionMailer::MailDeliveryJob (Job ID: 1281a761-2fae-4393-a607-95d8459f4360) from Async(default) enqueued at 2023-07-11T09:35:14Z with arguments: "OrderMailer", "received", "deliver_now", {:args=>[#<GlobalID:0x00007f70e8053a38 @uri=#<URI::GID gid://depot/Order/8>>]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1281a761-2fae-4393-a607-95d8459f4360]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1281a761-2fae-4393-a607-95d8459f4360]   Rendering order_mailer/received.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1281a761-2fae-4393-a607-95d8459f4360]   Rendered order_mailer/received.html.erb within layouts/mailer (Duration: 1.7ms | Allocations: 136)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1281a761-2fae-4393-a607-95d8459f4360]   Rendered layout layouts/mailer.html.erb (Duration: 6.3ms | Allocations: 363)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1281a761-2fae-4393-a607-95d8459f4360]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1281a761-2fae-4393-a607-95d8459f4360]   Rendering order_mailer/received.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1281a761-2fae-4393-a607-95d8459f4360]   [1m[36mLineItem Load (0.7ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."order_id" = ?[0m  [["order_id", 8]]
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1281a761-2fae-4393-a607-95d8459f4360]   ↳ app/views/order_mailer/received.text.erb:4
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1281a761-2fae-4393-a607-95d8459f4360]   [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1281a761-2fae-4393-a607-95d8459f4360]   ↳ app/views/line_items/_line_item.text.erb:3
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1281a761-2fae-4393-a607-95d8459f4360]   [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1281a761-2fae-4393-a607-95d8459f4360]   ↳ app/views/line_items/_line_item.text.erb:3
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1281a761-2fae-4393-a607-95d8459f4360]   [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1281a761-2fae-4393-a607-95d8459f4360]   ↳ app/views/line_items/_line_item.text.erb:3
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1281a761-2fae-4393-a607-95d8459f4360]   [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1281a761-2fae-4393-a607-95d8459f4360]   ↳ app/views/line_items/_line_item.text.erb:3
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1281a761-2fae-4393-a607-95d8459f4360]   [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1281a761-2fae-4393-a607-95d8459f4360]   ↳ app/views/line_items/_line_item.text.erb:3
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1281a761-2fae-4393-a607-95d8459f4360]   [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1281a761-2fae-4393-a607-95d8459f4360]   ↳ app/views/line_items/_line_item.text.erb:3
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1281a761-2fae-4393-a607-95d8459f4360]   Rendered collection of line_items/_line_item.text.erb [6 times] (Duration: 31.2ms | Allocations: 4346)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1281a761-2fae-4393-a607-95d8459f4360]   Rendered order_mailer/received.text.erb within layouts/mailer (Duration: 39.4ms | Allocations: 6337)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1281a761-2fae-4393-a607-95d8459f4360]   Rendered layout layouts/mailer.text.erb (Duration: 42.2ms | Allocations: 6530)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1281a761-2fae-4393-a607-95d8459f4360] OrderMailer#received: processed outbound mail in 76.2ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1281a761-2fae-4393-a607-95d8459f4360] Delivered mail 64ad2252b71b2_5166764894971@ismail-007.mail (2917.0ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1281a761-2fae-4393-a607-95d8459f4360] Date: Tue, 11 Jul 2023 15:35:14 +0600
+From: Sam Ruby <depot@example.com>
+To: ismail@ismail.com
+Message-ID: <64ad2252b71b2_5166764894971@ismail-007.mail>
+Subject: Pragmatic Store Order Confirmation
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_64ad2252b3498_516676489482d";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_64ad2252b3498_516676489482d
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Dear Md.ismail ahmed
+Thank you for your recent order from The Pragmatic Store.
+You ordered the following items:
+ 1 x good shoe 
+ 1 x this is my new product
+ 1 x this is the new product for test
+ 1 x Modern CSS with Tailwind
+ 1 x Docker for Rails Developers
+ 1 x Design and Build Great Web APIs
+We'll send you a separate e-mail when your order ships.
+
+----==_mimepart_64ad2252b3498_516676489482d
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Order#received</h1>
+
+<p>
+  , find me in app/views/order_mailer/received.html.erb
+</p>
+  </body>
+</html>
+
+----==_mimepart_64ad2252b3498_516676489482d--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1281a761-2fae-4393-a607-95d8459f4360] Performed ActionMailer::MailDeliveryJob (Job ID: 1281a761-2fae-4393-a607-95d8459f4360) from Async(default) in 3003.97ms
+Started GET "/products" for ::1 at 2023-07-11 15:43:17 +0600
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `authorize'
+Redirected to http://localhost:3000/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 11ms (ActiveRecord: 0.5ms | Allocations: 1340)
+
+
+Started GET "/login" for ::1 at 2023-07-11 15:43:17 +0600
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.8ms | Allocations: 697)
+  Rendered layouts/_cart.html.erb (Duration: 0.1ms | Allocations: 10)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | Allocations: 1623)
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.0ms | Allocations: 1938)
+
+
+Started GET "/users" for ::1 at 2023-07-11 15:43:24 +0600
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `authorize'
+Redirected to http://localhost:3000/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 5ms (ActiveRecord: 0.3ms | Allocations: 985)
+
+
+Started GET "/login" for ::1 at 2023-07-11 15:43:24 +0600
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 653)
+  Rendered layouts/_cart.html.erb (Duration: 0.1ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | Allocations: 1546)
+Completed 200 OK in 10ms (Views: 9.3ms | ActiveRecord: 0.0ms | Allocations: 1814)
+
+
+Started GET "/users/new" for ::1 at 2023-07-11 15:43:32 +0600
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (4.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `authorize'
+Redirected to http://localhost:3000/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 8ms (ActiveRecord: 4.4ms | Allocations: 951)
+
+
+Started GET "/login" for ::1 at 2023-07-11 15:43:32 +0600
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 5.8ms | Allocations: 636)
+  Rendered layouts/_cart.html.erb (Duration: 0.1ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 8.2ms | Allocations: 1529)
+Completed 200 OK in 10ms (Views: 9.0ms | ActiveRecord: 0.0ms | Allocations: 1797)
+
+
+Started POST "/login" for ::1 at 2023-07-11 15:43:38 +0600
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "name"=>"ismail", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "ismail"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 293ms (ActiveRecord: 0.6ms | Allocations: 918)
+
+
+Started GET "/admin" for ::1 at 2023-07-11 15:43:38 +0600
+Processing by AdminController#index as TURBO_STREAM
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `authorize'
+  [1m[36mOrder Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders"[0m
+  ↳ app/controllers/admin_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering admin/index.html.erb within layouts/application
+  Rendered admin/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 28)
+  Rendered layouts/_cart.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | Allocations: 1241)
+Completed 200 OK in 7ms (Views: 3.6ms | ActiveRecord: 0.5ms | Allocations: 2691)
+
+
+Started GET "/orders" for ::1 at 2023-07-11 15:43:44 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `authorize'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/views/orders/index.html.erb:12
+  Rendered collection of orders/_order.html.erb [8 times] (Duration: 2.0ms | Allocations: 893)
+  Rendered orders/index.html.erb within layouts/application (Duration: 4.6ms | Allocations: 1739)
+  Rendered layouts/_cart.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | Allocations: 2935)
+Completed 200 OK in 11ms (Views: 7.8ms | ActiveRecord: 0.6ms | Allocations: 3859)
+
+
+Started GET "/products" for ::1 at 2023-07-11 15:43:46 +0600
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `authorize'
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:24
+  Rendered products/index.html.erb within layouts/application (Duration: 5.8ms | Allocations: 3576)
+  Rendered layouts/_cart.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | Allocations: 4761)
+Completed 200 OK in 11ms (Views: 8.6ms | ActiveRecord: 0.5ms | Allocations: 5669)
+
+
+Started GET "/users" for ::1 at 2023-07-11 15:43:48 +0600
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `authorize'
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."name" ASC[0m
+  ↳ app/views/users/index.html.erb:12
+  Rendered collection of users/_user.html.erb [1 times] (Duration: 0.3ms | Allocations: 116)
+  Rendered users/index.html.erb within layouts/application (Duration: 2.8ms | Allocations: 866)
+  Rendered layouts/_cart.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | Allocations: 2062)
+Completed 200 OK in 8ms (Views: 5.5ms | ActiveRecord: 0.5ms | Allocations: 3020)
+
+
+Started DELETE "/logout" for ::1 at 2023-07-11 15:43:50 +0600
+Processing by SessionsController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 398)
+
+
+Started GET "/" for ::1 at 2023-07-11 15:43:50 +0600
+Processing by StoreController#index as TURBO_STREAM
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 54], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:4:in `set_cart'
+  Rendering layout layouts/application.html.erb
+  Rendering store/index.html.erb within layouts/application
+  Rendered store/_notice.html.erb (Duration: 0.4ms | Allocations: 26)
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:12
+  Rendered store/_product.html.erb (Duration: 1.4ms | Allocations: 680)
+  Rendered store/_product.html.erb (Duration: 1.6ms | Allocations: 616)
+  Rendered store/_product.html.erb (Duration: 1.3ms | Allocations: 616)
+  Rendered store/_product.html.erb (Duration: 1.1ms | Allocations: 527)
+  Rendered store/_product.html.erb (Duration: 1.1ms | Allocations: 526)
+  Rendered store/_product.html.erb (Duration: 1.7ms | Allocations: 536)
+  Rendered store/index.html.erb within layouts/application (Duration: 12.4ms | Allocations: 4680)
+  [1m[36mLineItem Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 54], ["LIMIT", 1]]
+  ↳ app/views/layouts/_cart.html.erb:1
+  Rendered layouts/_cart.html.erb (Duration: 2.2ms | Allocations: 718)
+  Rendered layout layouts/application.html.erb (Duration: 16.6ms | Allocations: 6281)
+Completed 200 OK in 20ms (Views: 16.6ms | ActiveRecord: 1.0ms | Allocations: 7246)
+
+
+Started GET "/cable" for ::1 at 2023-07-11 15:43:50 +0600
+Started GET "/cable" [WebSocket] for ::1 at 2023-07-11 15:43:50 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Turbo::StreamsChannel is transmitting the subscription confirmation
+Turbo::StreamsChannel is streaming from products
+Started GET "/admin" for ::1 at 2023-07-11 15:43:58 +0600
+Processing by AdminController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `authorize'
+Redirected to http://localhost:3000/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 12ms (ActiveRecord: 0.3ms | Allocations: 957)
+
+
+Started GET "/login" for ::1 at 2023-07-11 15:43:58 +0600
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.3ms | Allocations: 619)
+  Rendered layouts/_cart.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 1512)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.0ms | Allocations: 1780)
+
+
+Finished "/cable" [WebSocket] for ::1 at 2023-07-11 15:43:58 +0600
+Turbo::StreamsChannel stopped streaming from products
+Started POST "/login" for ::1 at 2023-07-11 15:44:01 +0600
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "name"=>"ismail", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[36mUser Load (7.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "ismail"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 293ms (ActiveRecord: 7.7ms | Allocations: 982)
+
+
+Started GET "/admin" for ::1 at 2023-07-11 15:44:01 +0600
+Processing by AdminController#index as TURBO_STREAM
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `authorize'
+  [1m[36mOrder Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders"[0m
+  ↳ app/controllers/admin_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering admin/index.html.erb within layouts/application
+  Rendered admin/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 24)
+  Rendered layouts/_cart.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 1233)
+Completed 200 OK in 6ms (Views: 2.9ms | ActiveRecord: 0.3ms | Allocations: 2635)
+
+
+Started DELETE "/logout" for ::1 at 2023-07-11 15:49:45 +0600
+Processing by SessionsController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 386)
+
+
+Started GET "/" for ::1 at 2023-07-11 15:49:46 +0600
+Processing by StoreController#index as TURBO_STREAM
+  [1m[36mCart Load (1.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 54], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:4:in `set_cart'
+  Rendering layout layouts/application.html.erb
+  Rendering store/index.html.erb within layouts/application
+  Rendered store/_notice.html.erb (Duration: 0.4ms | Allocations: 26)
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:12
+  Rendered store/_product.html.erb (Duration: 3.2ms | Allocations: 636)
+  Rendered store/_product.html.erb (Duration: 5.4ms | Allocations: 616)
+  Rendered store/_product.html.erb (Duration: 3.2ms | Allocations: 616)
+  Rendered store/_product.html.erb (Duration: 3.0ms | Allocations: 526)
+  Rendered store/_product.html.erb (Duration: 2.3ms | Allocations: 526)
+  Rendered store/_product.html.erb (Duration: 6.8ms | Allocations: 536)
+  Rendered store/index.html.erb within layouts/application (Duration: 42.6ms | Allocations: 4593)
+  [1m[36mLineItem Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 54], ["LIMIT", 1]]
+  ↳ app/views/layouts/_cart.html.erb:1
+  Rendered layouts/_cart.html.erb (Duration: 3.0ms | Allocations: 693)
+  Rendered layout layouts/application.html.erb (Duration: 49.4ms | Allocations: 6169)
+Completed 200 OK in 58ms (Views: 49.6ms | ActiveRecord: 2.3ms | Allocations: 7117)
+
+
+Started GET "/cable" for ::1 at 2023-07-11 15:49:46 +0600
+Started GET "/cable" [WebSocket] for ::1 at 2023-07-11 15:49:46 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Turbo::StreamsChannel is transmitting the subscription confirmation
+Turbo::StreamsChannel is streaming from products
