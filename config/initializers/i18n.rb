@@ -7,3 +7,11 @@ LANGUAGES = [
     ["Espa&ntilde;ol".html_safe, 'es']
     #["বাংলা".html_safe , 'bn']
 ]
+
+
+LANGUAGES = [
+    ['English', 'en'],
+    ["Espa&ntilde;ol".html_safe, 'es']
+    #["বাংলা".html_safe , 'bn']
+]
+
